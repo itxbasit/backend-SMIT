@@ -119,6 +119,7 @@ const updateUser = async (req, res) => {
       data: { user: d},
     });
   } catch (err) {
+    console.log(err)
     return res.status(404).send({ msg: err });
   }
 };
