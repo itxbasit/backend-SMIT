@@ -2,7 +2,7 @@ import express from "express";
 import { connect_DB } from "./app/DB/index.js";
 import { configDotenv } from "dotenv";
 import router from "./app/router.js";
-
+import os from "os";
 
 const app = express();
 
@@ -17,8 +17,14 @@ const PORT = process.env.PORT;
 
 app.use("/v1", router)
 
-app.get("/hello", (req, res) => {
-  res.send({ msg: "Hello SMIT" });
+app.get("/health", (req, res) => {
+  res.json({
+    memory: os.freemem(),
+
+    platform: os.arch(),
+
+    uptime: os.homedir(),
+  });
 });
 
 app.listen(PORT, () => {
