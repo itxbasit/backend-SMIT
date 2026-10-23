@@ -17,7 +17,7 @@ const PORT = process.env.PORT;
 
 app.use("/v1", router)
 
-app.get("/health", (req, res) => {
+app.get("/test", (req, res) => {
   res.json({
     memory: os.freemem(),
 
